@@ -85,6 +85,7 @@ namespace Abonados_betis2
             abonados.rutaImagenSocio = txtImagen.Text;
             abonados.imagenSocio = imageToByteArray(Image.FromFile(txtImagen.Text));
 
+
             Socio.Add(abonados);
             MostrarActual();
         }
