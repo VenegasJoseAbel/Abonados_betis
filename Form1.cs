@@ -10,23 +10,22 @@ namespace Abonados_betis2
             InitializeComponent();
             Socio = new List<Abonados>();
 
-//            MostrarSiguienteElemento();
+            //            MostrarSiguienteElemento();
         }
 
         public void MostrarSiguienteElemento()
         {
-            if (posicion < Socio.Count)
+            if (posicion < Socio.Count - 1)
             {
-                txtNum.Text = Socio[posicion+1].numeroSocio.ToString();
-                txtNombre.Text = Socio[posicion+1].nombreSocio;
-                txtApellido.Text = Socio[posicion+1].apellidoSocio;
-                txtEdad.Text = Socio[posicion+1].edadSocio.ToString();
-                txtGrada.Text = Socio[posicion+1].gradaSocio.ToString();
-                ckRealizoElPago.Checked = Socio[posicion+1].pagoSocio;
-                txtImagen.Text = Socio[posicion+1].rutaImagenSocio.ToString();
+                txtNum.Text = Socio[posicion + 1].numeroSocio.ToString();
+                txtNombre.Text = Socio[posicion + 1].nombreSocio;
+                txtApellido.Text = Socio[posicion + 1].apellidoSocio;
+                txtEdad.Text = Socio[posicion + 1].edadSocio.ToString();
+                txtGrada.Text = Socio[posicion + 1].gradaSocio.ToString();
+                ckRealizoElPago.Checked = Socio[posicion + 1].pagoSocio;
+                txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
                 posicion++;
             }
-
         }
 
         public void TxtBlancos()
@@ -95,13 +94,13 @@ namespace Abonados_betis2
         {
             if (posicion > 0)
             {
-                txtNum.Text = Socio[posicion-1].numeroSocio.ToString();
-                txtNombre.Text = Socio[posicion-1].nombreSocio;
-                txtApellido.Text = Socio[posicion-1].apellidoSocio;
-                txtEdad.Text = Socio[posicion-1].edadSocio.ToString();
-                txtGrada.Text = Socio[posicion-1].gradaSocio.ToString();
-                ckRealizoElPago.Checked = Socio[posicion-1].pagoSocio;
-                txtImagen.Text = Socio[posicion-1].rutaImagenSocio.ToString();
+                txtNum.Text = Socio[posicion - 1].numeroSocio.ToString();
+                txtNombre.Text = Socio[posicion - 1].nombreSocio;
+                txtApellido.Text = Socio[posicion - 1].apellidoSocio;
+                txtEdad.Text = Socio[posicion - 1].edadSocio.ToString();
+                txtGrada.Text = Socio[posicion - 1].gradaSocio.ToString();
+                ckRealizoElPago.Checked = Socio[posicion - 1].pagoSocio;
+                txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
                 posicion--;
             }
         }

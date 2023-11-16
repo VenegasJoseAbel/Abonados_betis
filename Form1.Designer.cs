@@ -174,9 +174,11 @@
             // 
             // imagen
             // 
+            imagen.Image = Properties.Resources._default;
             imagen.Location = new Point(374, 28);
             imagen.Name = "imagen";
             imagen.Size = new Size(177, 167);
+            imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             imagen.TabIndex = 14;
             imagen.TabStop = false;
             // 
