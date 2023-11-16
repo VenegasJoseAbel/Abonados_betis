@@ -10,20 +10,20 @@ namespace Abonados_betis2
             InitializeComponent();
             Socio = new List<Abonados>();
 
-            MostrarSiguienteElemento();
+//            MostrarSiguienteElemento();
         }
 
         public void MostrarSiguienteElemento()
         {
             if (posicion < Socio.Count)
             {
-                txtNum.Text = Socio[posicion].numeroSocio.ToString();
-                txtNombre.Text = Socio[posicion].nombreSocio;
-                txtApellido.Text = Socio[posicion].apellidoSocio;
-                txtEdad.Text = Socio[posicion].edadSocio.ToString();
-                txtGrada.Text = Socio[posicion].gradaSocio.ToString();
-                ckRealizoElPago.Checked = Socio[posicion].pagoSocio;
-                txtImagen.Text = Socio[posicion].rutaImagenSocio.ToString();
+                txtNum.Text = Socio[posicion+1].numeroSocio.ToString();
+                txtNombre.Text = Socio[posicion+1].nombreSocio;
+                txtApellido.Text = Socio[posicion+1].apellidoSocio;
+                txtEdad.Text = Socio[posicion+1].edadSocio.ToString();
+                txtGrada.Text = Socio[posicion+1].gradaSocio.ToString();
+                ckRealizoElPago.Checked = Socio[posicion+1].pagoSocio;
+                txtImagen.Text = Socio[posicion+1].rutaImagenSocio.ToString();
                 posicion++;
             }
 
@@ -38,7 +38,7 @@ namespace Abonados_betis2
             txtGrada.Text = "";
             txtPago.Text = "";
             txtImagen.Text = "";
-            
+            ckRealizoElPago.Checked = false;
         }
 
         public void MostrarActual()
