@@ -5,6 +5,7 @@ namespace Abonados_betis2
         List<Abonados> Socio;
         int posicion = 0;
 
+
         public Form1()
         {
             InitializeComponent();
@@ -22,11 +23,7 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion + 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion + 1].pagoSocio;
                 txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
-                try
-                {
-                    imagen.Load("default.jpg");
-                }
-                catch (Exception ex) { }
+                cargarImagen();
                 posicion++;
             }
         }
@@ -53,23 +50,13 @@ namespace Abonados_betis2
             txtPago.Text = Socio[posicion].costoSocio.ToString();
             ckRealizoElPago.Checked = Socio[posicion].pagoSocio;
             txtImagen.Text = Socio[posicion].rutaImagenSocio.ToString();
-            try
-            {
-                imagen.Load("default.jpg");
-            }
-            catch (Exception ex) { }
+            cargarImagen();
         }
 
         private void butCrear_Click(object sender, EventArgs e)
         {
             TxtBlancos();
             lblNumeroTotalSocio.Text = Socio.Count.ToString();
-            try
-            {
-                imagen.Load("default.jpg");
-            }
-            catch (Exception ex) { }
-
         }
 
         private void butEliminar_Click(object sender, EventArgs e)
@@ -96,6 +83,7 @@ namespace Abonados_betis2
             abonados.costoSocio = float.Parse(txtPago.Text);
             abonados.pagoSocio = ckRealizoElPago.Checked;
             abonados.rutaImagenSocio = txtImagen.Text;
+            abonados.imagenSocio = imageToByteArray(Image.FromFile(txtImagen.Text));
 
             Socio.Add(abonados);
             MostrarActual();
@@ -118,23 +106,14 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion - 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion - 1].pagoSocio;
                 txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
-                try
-                {
-                    imagen.Load("default.jpg");
-                }
-                catch (Exception ex) { }
+                cargarImagen();
                 posicion--;
             }
         }
 
         private void butCargarImg_Click(object sender, EventArgs e)
         {
-            try
-            {
-                imagen.Load(Socio[posicion].rutaImagenSocio);
-            }
-            catch (Exception ex) { }
-
+            cargarImagen();
         }
 
         private void butModificar_Click(object sender, EventArgs e)
@@ -147,7 +126,32 @@ namespace Abonados_betis2
             Socio[posicion].costoSocio = float.Parse(txtPago.Text);
             Socio[posicion].pagoSocio = ckRealizoElPago.Checked;
             Socio[posicion].rutaImagenSocio = txtImagen.Text;
+            cargarImagen();
             MostrarActual();
         }
+
+        public byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+        }
+
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            MemoryStream ms = new MemoryStream(byteArrayIn);
+            Image returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
+        public void cargarImagen()
+        {
+            try
+            {
+                imagen.Image = (byteArrayToImage(Socio[posicion].imagenSocio));
+            }
+            catch (Exception ex) { }
+        }
+
     }
 }

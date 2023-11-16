@@ -16,7 +16,19 @@ namespace Abonados_betis2
         private float CostoSocio;
         private Boolean PagoSocio;
         private String RutaImagenSocio;
+        private byte[] ImagenSocio;
 
+        public byte[] imagenSocio
+        {
+            get
+            {
+                return ImagenSocio;
+            }
+            set
+            {
+                ImagenSocio = value;
+            }
+        }
 
         public int numeroSocio
         {
