@@ -226,6 +226,7 @@
             butCargarImg.TabIndex = 19;
             butCargarImg.Text = "Cargar img";
             butCargarImg.UseVisualStyleBackColor = true;
+            butCargarImg.Click += butCargarImg_Click;
             // 
             // butAnterior
             // 

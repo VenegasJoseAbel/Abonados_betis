@@ -9,8 +9,6 @@ namespace Abonados_betis2
         {
             InitializeComponent();
             Socio = new List<Abonados>();
-
-            //            MostrarSiguienteElemento();
         }
 
         public void MostrarSiguienteElemento()
@@ -24,6 +22,11 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion + 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion + 1].pagoSocio;
                 txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
+                try
+                {
+                    imagen.Load("default.jpg");
+                }
+                catch (Exception ex) { }
                 posicion++;
             }
         }
@@ -50,11 +53,21 @@ namespace Abonados_betis2
             txtPago.Text = Socio[posicion].costoSocio.ToString();
             ckRealizoElPago.Checked = Socio[posicion].pagoSocio;
             txtImagen.Text = Socio[posicion].rutaImagenSocio.ToString();
+            try
+            {
+                imagen.Load("default.jpg");
+            }
+            catch (Exception ex) { }
         }
 
         private void butCrear_Click(object sender, EventArgs e)
         {
             TxtBlancos();
+            try
+            {
+                imagen.Load("default.jpg");
+            }catch (Exception ex){}
+            
         }
 
         private void butEliminar_Click(object sender, EventArgs e)
@@ -101,8 +114,23 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion - 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion - 1].pagoSocio;
                 txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
+                try
+                {
+                    imagen.Load("default.jpg");
+                }
+                catch (Exception ex) { }
                 posicion--;
             }
+        }
+
+        private void butCargarImg_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                imagen.Load(Socio[posicion].rutaImagenSocio);
+            }
+            catch (Exception ex) { }
+            
         }
     }
 }
