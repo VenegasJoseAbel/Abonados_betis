@@ -136,5 +136,18 @@ namespace Abonados_betis2
             catch (Exception ex) { }
 
         }
+
+        private void butModificar_Click(object sender, EventArgs e)
+        {
+            Socio[posicion].numeroSocio = int.Parse(txtNum.Text);
+            Socio[posicion].nombreSocio = txtNombre.Text;
+            Socio[posicion].apellidoSocio = txtApellido.Text;
+            Socio[posicion].edadSocio = int.Parse(txtEdad.Text);
+            Socio[posicion].gradaSocio = char.Parse(txtGrada.Text);
+            Socio[posicion].costoSocio = float.Parse(txtPago.Text);
+            Socio[posicion].pagoSocio = ckRealizoElPago.Checked;
+            Socio[posicion].rutaImagenSocio = txtImagen.Text;
+            MostrarActual();
+        }
     }
 }

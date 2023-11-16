@@ -54,6 +54,7 @@
             butSiguiente = new Button();
             label8 = new Label();
             lblNumeroTotalSocio = new Label();
+            butModificar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imagen).BeginInit();
             SuspendLayout();
@@ -287,11 +288,22 @@
             lblNumeroTotalSocio.Size = new Size(0, 15);
             lblNumeroTotalSocio.TabIndex = 26;
             // 
+            // butModificar
+            // 
+            butModificar.Location = new Point(573, 109);
+            butModificar.Name = "butModificar";
+            butModificar.Size = new Size(75, 23);
+            butModificar.TabIndex = 27;
+            butModificar.Text = "Modificar";
+            butModificar.UseVisualStyleBackColor = true;
+            butModificar.Click += butModificar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 336);
+            Controls.Add(butModificar);
             Controls.Add(lblNumeroTotalSocio);
             Controls.Add(label8);
             Controls.Add(butSiguiente);
@@ -354,5 +366,6 @@
         private Button butSiguiente;
         private Label label8;
         private Label lblNumeroTotalSocio;
+        private Button butModificar;
     }
 }
