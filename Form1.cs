@@ -38,7 +38,7 @@ namespace Abonados_betis2
             txtGrada.Text = "";
             txtPago.Text = "";
             txtImagen.Text = "";
-            ckRealizoElPago.Checked = false;
+            
         }
 
         public void MostrarActual()
