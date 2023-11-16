@@ -52,6 +52,8 @@
             butCrear = new Button();
             butEliminar = new Button();
             butSiguiente = new Button();
+            label8 = new Label();
+            lblNumeroTotalSocio = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imagen).BeginInit();
             SuspendLayout();
@@ -268,11 +270,30 @@
             butSiguiente.UseVisualStyleBackColor = true;
             butSiguiente.Click += butSiguiente_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(2, 74);
+            label8.Name = "label8";
+            label8.Size = new Size(67, 15);
+            label8.TabIndex = 25;
+            label8.Text = "Total Socio:";
+            // 
+            // lblNumeroTotalSocio
+            // 
+            lblNumeroTotalSocio.AutoSize = true;
+            lblNumeroTotalSocio.Location = new Point(75, 74);
+            lblNumeroTotalSocio.Name = "lblNumeroTotalSocio";
+            lblNumeroTotalSocio.Size = new Size(0, 15);
+            lblNumeroTotalSocio.TabIndex = 26;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 336);
+            Controls.Add(lblNumeroTotalSocio);
+            Controls.Add(label8);
             Controls.Add(butSiguiente);
             Controls.Add(butEliminar);
             Controls.Add(butCrear);
@@ -331,5 +352,7 @@
         private Button butCrear;
         private Button butEliminar;
         private Button butSiguiente;
+        private Label label8;
+        private Label lblNumeroTotalSocio;
     }
 }

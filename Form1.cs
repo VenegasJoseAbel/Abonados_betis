@@ -63,11 +63,13 @@ namespace Abonados_betis2
         private void butCrear_Click(object sender, EventArgs e)
         {
             TxtBlancos();
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
             try
             {
                 imagen.Load("default.jpg");
-            }catch (Exception ex){}
-            
+            }
+            catch (Exception ex) { }
+
         }
 
         private void butEliminar_Click(object sender, EventArgs e)
@@ -84,6 +86,7 @@ namespace Abonados_betis2
 
         private void butConfirmar_Click(object sender, EventArgs e)
         {
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
             Abonados abonados = new Abonados();
             abonados.numeroSocio = int.Parse(txtNum.Text);
             abonados.nombreSocio = txtNombre.Text;
@@ -101,6 +104,7 @@ namespace Abonados_betis2
         private void butCancelar_Click(object sender, EventArgs e)
         {
             MostrarActual();
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
         }
 
         private void butAnterior_Click(object sender, EventArgs e)
@@ -130,7 +134,7 @@ namespace Abonados_betis2
                 imagen.Load(Socio[posicion].rutaImagenSocio);
             }
             catch (Exception ex) { }
-            
+
         }
     }
 }
