@@ -16,7 +16,13 @@ namespace Abonados_betis2
         private float CostoSocio;
         private Boolean PagoSocio;
         private String RutaImagenSocio;
+        private int Tam;
         private byte[] ImagenSocio;
+
+        public int tam
+        {
+            get { return Tam; }
+        }
 
         public byte[] imagenSocio
         {
@@ -27,6 +33,7 @@ namespace Abonados_betis2
             set
             {
                 ImagenSocio = value;
+                tamaño();
             }
         }
 
@@ -125,6 +132,10 @@ namespace Abonados_betis2
              {
                      RutaImagenSocio = value;
              }
+        }
+        public void tamaño()
+        {
+            Tam = imagenSocio.Length;
         }
     }
 }

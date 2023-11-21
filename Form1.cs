@@ -10,6 +10,7 @@ namespace Abonados_betis2
         {
             InitializeComponent();
             Socio = new List<Abonados>();
+            leerFichero();
         }
 
         public void MostrarSiguienteElemento()
@@ -23,8 +24,9 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion + 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion + 1].pagoSocio;
                 txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
-                cargarImagen();
                 posicion++;
+                cargarImagen();
+
             }
         }
 
@@ -61,9 +63,7 @@ namespace Abonados_betis2
 
         private void butEliminar_Click(object sender, EventArgs e)
         {
-            Abonados abonados = new Abonados();
-
-            Socio.Remove(abonados);
+            Socio.Remove(Socio[posicion]);
         }
 
         private void butSiguiente_Click(object sender, EventArgs e)
@@ -84,7 +84,6 @@ namespace Abonados_betis2
             abonados.pagoSocio = ckRealizoElPago.Checked;
             abonados.rutaImagenSocio = txtImagen.Text;
             abonados.imagenSocio = imageToByteArray(Image.FromFile(txtImagen.Text));
-
 
             Socio.Add(abonados);
             MostrarActual();
@@ -107,8 +106,9 @@ namespace Abonados_betis2
                 txtGrada.Text = Socio[posicion - 1].gradaSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion - 1].pagoSocio;
                 txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
-                cargarImagen();
                 posicion--;
+                cargarImagen();
+
             }
         }
 
@@ -154,5 +154,97 @@ namespace Abonados_betis2
             catch (Exception ex) { }
         }
 
+        public void gardarEnFichero()
+        {
+            BinaryWriter fichero;
+            try
+            {
+                fichero = new BinaryWriter(File.Open("databank.data", FileMode.Create));
+                //fichero.Write(Socio.Count);
+
+                for (int i = 0; i < Socio.Count; i++)
+                {
+                    fichero.Write(Socio[i].numeroSocio);
+                    fichero.Write(Socio[i].nombreSocio);
+                    fichero.Write(Socio[i].apellidoSocio);
+                    fichero.Write(Socio[i].edadSocio);
+                    fichero.Write(Socio[i].gradaSocio);
+                    fichero.Write(Socio[i].costoSocio);
+                    fichero.Write(Socio[i].pagoSocio);
+                    fichero.Write(Socio[i].rutaImagenSocio);
+                    fichero.Write(Socio[i].tam);
+                    fichero.Write(Socio[i].imagenSocio);
+                }
+
+                fichero.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Maricon");
+            }
+        }
+
+        public void leerFichero()
+        {
+            int NumeroSocioAux;
+            String NombreSocioAux;
+            String ApellidoSocioAux;
+            int EdadSocioAux;
+            char GradaSocioAux;
+            float CostoSocioAux;
+            Boolean PagoSocioAux;
+            String RutaImagenSocioAux;
+            int TamAux;
+            byte[] ImagenSocioAux;
+
+            try
+            {
+                BinaryReader Fichero2;
+                Fichero2 = new BinaryReader(File.OpenRead("databank.data"));
+                int count = Fichero2.ReadInt32();
+                lblNumeroTotalSocio.Text = count.ToString();
+                for (int i = 0; i < count; i++)
+                {
+                    NumeroSocioAux = Fichero2.ReadInt32();
+                    NombreSocioAux = Fichero2.ReadString();
+                    ApellidoSocioAux = Fichero2.ReadString();
+                    EdadSocioAux = Fichero2.ReadInt32();
+                    GradaSocioAux = Fichero2.ReadChar();
+                    CostoSocioAux = Fichero2.ReadSingle();
+                    PagoSocioAux = Fichero2.ReadBoolean();
+                    RutaImagenSocioAux = Fichero2.ReadString();
+                    TamAux = Fichero2.ReadInt32();
+                    ImagenSocioAux = Fichero2.ReadBytes(TamAux);
+
+                    Abonados abonados = new Abonados();
+                    abonados.numeroSocio = NumeroSocioAux;
+                    abonados.nombreSocio = NombreSocioAux;
+                    abonados.apellidoSocio = ApellidoSocioAux;
+                    abonados.edadSocio = EdadSocioAux;
+                    abonados.gradaSocio = GradaSocioAux;
+                    abonados.costoSocio = CostoSocioAux;
+                    abonados.pagoSocio = PagoSocioAux;
+                    abonados.rutaImagenSocio = RutaImagenSocioAux;
+                    abonados.imagenSocio = ImagenSocioAux;
+
+                    Socio.Add(abonados);
+                }
+                Fichero2.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Mariano");
+            }
+        }
+
+        private void butGuardar_Click(object sender, EventArgs e)
+        {
+            gardarEnFichero();
+        }
+
+        private void butCargar_Click(object sender, EventArgs e)
+        {
+            leerFichero();
+        }
     }
 }

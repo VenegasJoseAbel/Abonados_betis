@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -55,19 +54,10 @@
             label8 = new Label();
             lblNumeroTotalSocio = new Label();
             butModificar = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            butGuardar = new Button();
+            butCargar = new Button();
             ((System.ComponentModel.ISupportInitialize)imagen).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.Real_betis_logo;
-            pictureBox1.Location = new Point(2, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(83, 69);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -177,7 +167,6 @@
             // 
             // imagen
             // 
-            imagen.Image = Properties.Resources._default;
             imagen.Location = new Point(374, 28);
             imagen.Name = "imagen";
             imagen.Size = new Size(177, 167);
@@ -274,7 +263,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(2, 74);
+            label8.Location = new Point(12, 9);
             label8.Name = "label8";
             label8.Size = new Size(67, 15);
             label8.TabIndex = 25;
@@ -283,14 +272,14 @@
             // lblNumeroTotalSocio
             // 
             lblNumeroTotalSocio.AutoSize = true;
-            lblNumeroTotalSocio.Location = new Point(75, 74);
+            lblNumeroTotalSocio.Location = new Point(85, 9);
             lblNumeroTotalSocio.Name = "lblNumeroTotalSocio";
             lblNumeroTotalSocio.Size = new Size(0, 15);
             lblNumeroTotalSocio.TabIndex = 26;
             // 
             // butModificar
             // 
-            butModificar.Location = new Point(573, 109);
+            butModificar.Location = new Point(573, 99);
             butModificar.Name = "butModificar";
             butModificar.Size = new Size(75, 23);
             butModificar.TabIndex = 27;
@@ -298,11 +287,33 @@
             butModificar.UseVisualStyleBackColor = true;
             butModificar.Click += butModificar_Click;
             // 
+            // butGuardar
+            // 
+            butGuardar.Location = new Point(573, 167);
+            butGuardar.Name = "butGuardar";
+            butGuardar.Size = new Size(75, 23);
+            butGuardar.TabIndex = 28;
+            butGuardar.Text = "Guardar";
+            butGuardar.UseVisualStyleBackColor = true;
+            butGuardar.Click += butGuardar_Click;
+            // 
+            // butCargar
+            // 
+            butCargar.Location = new Point(573, 138);
+            butCargar.Name = "butCargar";
+            butCargar.Size = new Size(75, 23);
+            butCargar.TabIndex = 29;
+            butCargar.Text = "Cargar";
+            butCargar.UseVisualStyleBackColor = true;
+            butCargar.Click += butCargar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(677, 336);
+            Controls.Add(butCargar);
+            Controls.Add(butGuardar);
             Controls.Add(butModificar);
             Controls.Add(lblNumeroTotalSocio);
             Controls.Add(label8);
@@ -329,18 +340,14 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)imagen).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -367,5 +374,7 @@
         private Label label8;
         private Label lblNumeroTotalSocio;
         private Button butModificar;
+        private Button butGuardar;
+        private Button butCargar;
     }
 }
