@@ -22,6 +22,7 @@ namespace Abonados_betis2
                 txtApellido.Text = Socio[posicion + 1].apellidoSocio;
                 txtEdad.Text = Socio[posicion + 1].edadSocio.ToString();
                 txtGrada.Text = Socio[posicion + 1].gradaSocio.ToString();
+                txtPago.Text = Socio[posicion + 1].costoSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion + 1].pagoSocio;
                 txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
                 posicion++;
@@ -64,6 +65,9 @@ namespace Abonados_betis2
         private void butEliminar_Click(object sender, EventArgs e)
         {
             Socio.Remove(Socio[posicion]);
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
+            posicion--;
+            MostrarActual();
         }
 
         private void butSiguiente_Click(object sender, EventArgs e)
@@ -104,6 +108,7 @@ namespace Abonados_betis2
                 txtApellido.Text = Socio[posicion - 1].apellidoSocio;
                 txtEdad.Text = Socio[posicion - 1].edadSocio.ToString();
                 txtGrada.Text = Socio[posicion - 1].gradaSocio.ToString();
+                txtPago.Text = Socio[posicion - 1].costoSocio.ToString();
                 ckRealizoElPago.Checked = Socio[posicion - 1].pagoSocio;
                 txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
                 posicion--;
