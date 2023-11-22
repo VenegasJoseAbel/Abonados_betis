@@ -160,7 +160,7 @@ namespace Abonados_betis2
             try
             {
                 fichero = new BinaryWriter(File.Open("databank.data", FileMode.Create));
-                //fichero.Write(Socio.Count);
+                fichero.Write(Socio.Count);
 
                 for (int i = 0; i < Socio.Count; i++)
                 {
@@ -180,7 +180,7 @@ namespace Abonados_betis2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Maricon");
+                MessageBox.Show("no guarda");
             }
         }
 
@@ -228,6 +228,7 @@ namespace Abonados_betis2
                     abonados.imagenSocio = ImagenSocioAux;
 
                     Socio.Add(abonados);
+                    MostrarActual();
                 }
                 Fichero2.Close();
             }
