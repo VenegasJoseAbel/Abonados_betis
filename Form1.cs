@@ -11,6 +11,7 @@ namespace Abonados_betis2
             InitializeComponent();
             Socio = new List<Abonados>();
             leerFichero();
+            comprobarbotones();
         }
 
         public void MostrarSiguienteElemento()
@@ -27,7 +28,7 @@ namespace Abonados_betis2
                 txtImagen.Text = Socio[posicion + 1].rutaImagenSocio.ToString();
                 posicion++;
                 cargarImagen();
-
+                comprobarbotones();
             }
         }
 
@@ -40,6 +41,7 @@ namespace Abonados_betis2
             txtGrada.Text = "";
             txtPago.Text = "";
             txtImagen.Text = "";
+            imagen.Image = null;
             ckRealizoElPago.Checked = false;
         }
 
@@ -54,6 +56,7 @@ namespace Abonados_betis2
             ckRealizoElPago.Checked = Socio[posicion].pagoSocio;
             txtImagen.Text = Socio[posicion].rutaImagenSocio.ToString();
             cargarImagen();
+            comprobarbotones();
         }
 
         private void butCrear_Click(object sender, EventArgs e)
@@ -66,18 +69,40 @@ namespace Abonados_betis2
         {
             Socio.Remove(Socio[posicion]);
             lblNumeroTotalSocio.Text = Socio.Count.ToString();
-            posicion--;
-            MostrarActual();
+            if(Socio.Count > 0 && posicion > 0)
+            {
+                posicion--;
+                MostrarActual();
+                butEliminar.Enabled = true;
+            }
+            else
+            {
+                if (posicion == 0 && Socio.Count > 0)
+                {
+                    MostrarActual();
+                    butEliminar.Enabled = true;
+                }
+                else
+                {
+                    butModificar.Enabled = false;
+                    butEliminar.Enabled = false;
+                    TxtBlancos();
+                }
+            }
+            
+            comprobarbotones();
         }
 
         private void butSiguiente_Click(object sender, EventArgs e)
         {
             MostrarSiguienteElemento();
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
         }
 
         private void butConfirmar_Click(object sender, EventArgs e)
         {
-            lblNumeroTotalSocio.Text = Socio.Count.ToString();
+            butModificar.Enabled = true;
+            butEliminar.Enabled = true;
             Abonados abonados = new Abonados();
             abonados.numeroSocio = int.Parse(txtNum.Text);
             abonados.nombreSocio = txtNombre.Text;
@@ -91,6 +116,7 @@ namespace Abonados_betis2
 
             Socio.Add(abonados);
             MostrarActual();
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
         }
 
         private void butCancelar_Click(object sender, EventArgs e)
@@ -113,8 +139,9 @@ namespace Abonados_betis2
                 txtImagen.Text = Socio[posicion - 1].rutaImagenSocio.ToString();
                 posicion--;
                 cargarImagen();
-
+                comprobarbotones();
             }
+            lblNumeroTotalSocio.Text = Socio.Count.ToString();
         }
 
         private void butCargarImg_Click(object sender, EventArgs e)
@@ -132,6 +159,7 @@ namespace Abonados_betis2
             Socio[posicion].costoSocio = float.Parse(txtPago.Text);
             Socio[posicion].pagoSocio = ckRealizoElPago.Checked;
             Socio[posicion].rutaImagenSocio = txtImagen.Text;
+            Socio[posicion].imagenSocio = imageToByteArray(Image.FromFile(txtImagen.Text));
             cargarImagen();
             MostrarActual();
         }
@@ -252,5 +280,31 @@ namespace Abonados_betis2
         {
             leerFichero();
         }
+
+        private void comprobarbotones()
+        {
+            if(posicion == 0)
+            {
+                butAnterior.Enabled = false;
+            }
+            else
+            {
+                butAnterior.Enabled = true;
+            }
+            if (posicion+1 == Socio.Count)
+            {
+                butSiguiente.Enabled = false;
+            }
+            else
+            {
+                butSiguiente.Enabled = true;
+            }
+            if(Socio.Count == 0)
+            {
+                butAnterior.Enabled = false;
+                butSiguiente.Enabled = false;
+            }
+        }
+
     }
 }
