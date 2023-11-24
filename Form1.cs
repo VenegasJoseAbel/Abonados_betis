@@ -12,6 +12,12 @@ namespace Abonados_betis2
             Socio = new List<Abonados>();
             leerFichero(); //llamo al metodo para leer.
             comprobarbotones(); //llamo a un metodo para activar/desactivar los botones anterior y siguiente.
+            this.FormClosing += Cerrar; //Cauando se cierra el formulario ejecuta el evento cerrar.
+        }
+
+        private void Cerrar(object sender, FormClosingEventArgs e)
+        {
+            gardarEnFichero(); //llamo al metodo para guardar el fichero.
         }
 
         public void MostrarSiguienteElemento()
@@ -208,7 +214,7 @@ namespace Abonados_betis2
                     fichero.Write(Socio[i].tam); //guarda el tamaño de byte que tiene la imagen.
                     fichero.Write(Socio[i].imagenSocio);
                 }
-
+                MessageBox.Show("Se han guardado los registros correctamente");
                 fichero.Close(); //Cerramos el fichero.
             }
             catch (Exception ex)
@@ -263,6 +269,7 @@ namespace Abonados_betis2
                     Socio.Add(abonados); //Añado mi nuevo registro.
                     MostrarActual();  //Muestro el actual.
                 }
+                MessageBox.Show("Se han añadido los registros correctamente"); //Un mensaje para indicar que todo salio bien
                 Fichero2.Close(); //Cierro el Fichero.
             }
             catch (Exception ex)
