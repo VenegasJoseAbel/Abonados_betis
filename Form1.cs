@@ -156,7 +156,7 @@ namespace Abonados_betis2
         }
 
         private void butModificar_Click(object sender, EventArgs e) //Modifico el registro actual.
-        {   
+        {
             Socio[posicion].numeroSocio = int.Parse(txtNum.Text);
             Socio[posicion].nombreSocio = txtNombre.Text;
             Socio[posicion].apellidoSocio = txtApellido.Text;

@@ -46,7 +46,6 @@
             txtImagen = new TextBox();
             butConfirmar = new Button();
             butCancelar = new Button();
-            butCargarImg = new Button();
             butAnterior = new Button();
             butCrear = new Button();
             butEliminar = new Button();
@@ -210,16 +209,6 @@
             butCancelar.UseVisualStyleBackColor = true;
             butCancelar.Click += butCancelar_Click;
             // 
-            // butCargarImg
-            // 
-            butCargarImg.Location = new Point(573, 202);
-            butCargarImg.Name = "butCargarImg";
-            butCargarImg.Size = new Size(75, 23);
-            butCargarImg.TabIndex = 19;
-            butCargarImg.Text = "Cargar img";
-            butCargarImg.UseVisualStyleBackColor = true;
-            butCargarImg.Click += butCargarImg_Click;
-            // 
             // butAnterior
             // 
             butAnterior.Location = new Point(91, 271);
@@ -299,7 +288,7 @@
             // 
             // butCargar
             // 
-            butCargar.Location = new Point(573, 138);
+            butCargar.Location = new Point(573, 142);
             butCargar.Name = "butCargar";
             butCargar.Size = new Size(75, 23);
             butCargar.TabIndex = 29;
@@ -321,7 +310,6 @@
             Controls.Add(butEliminar);
             Controls.Add(butCrear);
             Controls.Add(butAnterior);
-            Controls.Add(butCargarImg);
             Controls.Add(butCancelar);
             Controls.Add(butConfirmar);
             Controls.Add(txtImagen);
@@ -366,7 +354,6 @@
         private TextBox txtImagen;
         private Button butConfirmar;
         private Button butCancelar;
-        private Button butCargarImg;
         private Button butAnterior;
         private Button butCrear;
         private Button butEliminar;
